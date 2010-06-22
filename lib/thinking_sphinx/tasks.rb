@@ -6,6 +6,8 @@ namespace :thinking_sphinx do
       Rake::Task[:environment].invoke
       Rails.configuration.cache_classes = false
     end
+
+    Rake::Task[:environment].invoke    if defined?(DAEMON_ROOT)
     
     Rake::Task[:merb_env].invoke    if defined?(Merb)
   end

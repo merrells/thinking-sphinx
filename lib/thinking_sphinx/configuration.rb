@@ -90,6 +90,7 @@ module ThinkingSphinx
       else
         self.app_root          = RAILS_ROOT if defined?(RAILS_ROOT)
         self.app_root          = Merb.root  if defined?(Merb)
+        self.app_root          = DAEMON_ROOT if defined?(DAEMON_ROOT)
         self.app_root        ||= app_root
       end
       
@@ -129,6 +130,8 @@ module ThinkingSphinx
           Merb.environment
         elsif defined?(RAILS_ENV)
           RAILS_ENV
+        elsif defined?(DAEMON_ENV)
+          DAEMON_ENV
         else
           ENV['RAILS_ENV'] || 'development'
         end
